@@ -1,0 +1,48 @@
+ENTITY-RELATIONSHIP MODEL 
+
+1. ENTITIES AND ATTRIBUTES
+
+* GYMNASIUM
+  - Gym_ID (Primary Key)
+  - Name (Distinguishes the gymnasium)
+  - Address
+  - TelephoneNumber
+
+* MEMBER
+  - UniqueIdentifier (Primary Key)
+  - LastName
+  - FirstName
+  - Address
+  - DateOfBirth
+  - Gender
+
+* SESSION
+  - Session_ID (Primary Key)
+  - TypeOfSport
+  - Schedule
+  - MaxCapacity (Fixed at a maximum of 20 members)
+
+* COACH
+  - Coach_ID (Primary Key)
+  - LastName
+  - FirstName
+  - Age
+  - Specialty
+
+
+2. RELATIONSHIPS AND CARDINALITIES
+
+* REGISTER (Between MEMBER and GYMNASIUM)
+  - Description: Members can register at one of these gymnasiums.
+  - Cardinality: MEMBER (1, 1) - GYMNASIUM (0, N)
+  - Explanation: A member is registered at exactly one gymnasium, and a gymnasium can have many registered members.
+
+* ATTEND (Between MEMBER and SESSION)
+  - Description: Members attend training sessions, with each session accommodating a maximum of 20 members.
+  - Cardinality: MEMBER (0, N) - SESSION (0, 20)
+  - Explanation: A member can attend multiple sessions, and a session can accommodate anywhere from 0 up to a maximum of 20 members.
+
+* LEAD (Between COACH and SESSION)
+  - Description: Sessions are led by a maximum of two coaches.
+  - Cardinality: COACH (0, N) - SESSION (1, 2)
+  - Explanation: A coach can lead multiple sessions, and each session is led by 1 to 2 coaches.
